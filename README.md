@@ -37,6 +37,8 @@ The application sends control messages to a VideoHub device using the following 
 
 These settings control where the button press messages are sent. Make sure to update these values to match your VideoHub device's network configuration.
 
+The `SOCKET_CONFIG` dictionary in `app.py` defines the control messages sent to the VideoHub device when each button is pressed. The current messages ("Button X pressed") are placeholder values and should be replaced with the actual control commands as specified in your VideoHub device's documentation. Each button can send a different command to control various functions of the VideoHub.
+
 ## Running the Application
 
 1. Make sure your virtual environment is activated
