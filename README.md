@@ -56,22 +56,23 @@ To implement this change, you need to update three sections of the code:
 
 1. In `templates/index.html`:
    - Update the button IDs in the HTML:
+
      ```html
      <button id="button_turn_off_lights" class="button">Turn Off Lights</button>
      <button id="button_turn_on_lights" class="button">Turn On Lights</button>
      ```
-   - Update the CSS selectors if you want to maintain specific colors for each button:
+
+2. In `templates/index.html`:
+   - Update the CSS selectors if you want to maintain specific colors or other button specific configurations for each button in `templates/index.html`:
+
      ```css
      #button_turn_off_lights { background-color: #4CAF50; }
      #button_turn_on_lights { background-color: #2196F3; }
      ```
 
-2. In `app.py`:
+3. In `app.py`:
    - Update the `SOCKET_CONFIG` dictionary keys to match the new button IDs
    - Update the messages to match your VideoHub's command protocol
-
-3. In `templates/index.html` JavaScript:
-   - No changes needed as it uses the button ID directly
 
 This naming convention makes the code more self-documenting and easier to maintain, as the purpose of each button is immediately clear from its identifier.
 
