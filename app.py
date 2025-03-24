@@ -4,6 +4,8 @@ import json
 
 app = Flask(__name__)
 
+# Configuration
+PRIVATE_MODE = True  # Set to False to allow access from other devices on the network
 HOST = "192.168.10.129"
 PORT = 4444
 SOCKET_CONFIG = {
@@ -37,4 +39,5 @@ def send_message():
     return jsonify({'success': False, 'message': 'Invalid button ID'})
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    host = '127.0.0.1' if PRIVATE_MODE else '0.0.0.0'
+    app.run(host=host, debug=True) 
