@@ -63,7 +63,7 @@ To implement this change, you need to update three sections of the code:
      ```
 
 2. In `templates/index.html`:
-   - Update the CSS selectors if you want to maintain specific colors or other button specific configurations for each button in `templates/index.html`:
+   - Update the CSS selectors if you want to maintain specific colors or other button specific configurations for each button:
 
      ```css
      #button_turn_off_lights { background-color: #4CAF50; }
