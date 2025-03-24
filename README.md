@@ -23,17 +23,17 @@ The application can be run in two modes:
 - Private mode (default): Only accessible from the local machine (localhost)
 - Public mode: Accessible from other devices on the network
 
-To change the mode, edit the `PRIVATE_MODE` variable in `app.py`:
+To change the mode, edit the `APP_PRIVATE_MODE` variable in `app.py`:
 
-- `PRIVATE_MODE = True` (default): Only accessible from localhost
-- `PRIVATE_MODE = False`: Accessible from other devices on the network
+- `APP_PRIVATE_MODE = True` (default): Only accessible from localhost
+- `APP_PRIVATE_MODE = False`: Accessible from other devices on the network
 
 ### VideoHub Connection Settings
 
 The application sends control messages to a VideoHub device using the following configuration in `app.py`:
 
-- `HOST`: The IP address of the VideoHub device (default: "192.168.10.129")
-- `PORT`: The port number for the VideoHub connection (default: 4444)
+- `VIDEOHUB_HOST`: The IP address of the VideoHub device (default: "192.168.10.129")
+- `VIDEOHUB_PORT`: The port number for the VideoHub connection (default: 4444)
 
 These settings control where the button press messages are sent. Make sure to update these values to match your VideoHub device's network configuration.
 
@@ -48,6 +48,6 @@ These settings control where the button press messages are sent. Make sure to up
 
 3. Access the application:
    - From the same machine: Open your web browser and navigate to `http://localhost:5000`
-   - From other devices on the network (only if PRIVATE_MODE is False): 
+   - From other devices on the network (only if APP_PRIVATE_MODE is False): 
      Open your web browser and navigate to `http://<your-computer-ip>:5000`
      (Replace `<your-computer-ip>` with your computer's IP address on the local network)

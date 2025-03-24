@@ -5,14 +5,14 @@ import json
 app = Flask(__name__)
 
 # Configuration
-PRIVATE_MODE = True  # Set to False to allow access from other devices on the network
-HOST = "192.168.10.129"
-PORT = 4444
+APP_PRIVATE_MODE = True  # Set to False to allow access from other devices on the network
+VIDEOHUB_HOST = "192.168.10.129"
+VIDEOHUB_PORT = 4444
 SOCKET_CONFIG = {
-    'button1': {'ip': HOST, 'port': PORT, 'message': 'Button 1 pressed\n'},
-    'button2': {'ip': HOST, 'port': PORT, 'message': 'Button 2 pressed\n'},
-    'button3': {'ip': HOST, 'port': PORT, 'message': 'Button 3 pressed\n'},
-    'button4': {'ip': HOST, 'port': PORT, 'message': 'Button 4 pressed\n'}
+    'button1': {'ip': VIDEOHUB_HOST, 'port': VIDEOHUB_PORT, 'message': 'Button 1 pressed\n'},
+    'button2': {'ip': VIDEOHUB_HOST, 'port': VIDEOHUB_PORT, 'message': 'Button 2 pressed\n'},
+    'button3': {'ip': VIDEOHUB_HOST, 'port': VIDEOHUB_PORT, 'message': 'Button 3 pressed\n'},
+    'button4': {'ip': VIDEOHUB_HOST, 'port': VIDEOHUB_PORT, 'message': 'Button 4 pressed\n'}
 }
 
 def send_socket_message(ip, port, message):
@@ -39,5 +39,5 @@ def send_message():
     return jsonify({'success': False, 'message': 'Invalid button ID'})
 
 if __name__ == '__main__':
-    host = '127.0.0.1' if PRIVATE_MODE else '0.0.0.0'
+    host = '127.0.0.1' if APP_PRIVATE_MODE else '0.0.0.0'
     app.run(host=host, debug=True) 
