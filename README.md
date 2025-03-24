@@ -28,6 +28,15 @@ To change the mode, edit the `PRIVATE_MODE` variable in `app.py`:
 - `PRIVATE_MODE = True` (default): Only accessible from localhost
 - `PRIVATE_MODE = False`: Accessible from other devices on the network
 
+### VideoHub Connection Settings
+
+The application sends control messages to a VideoHub device using the following configuration in `app.py`:
+
+- `HOST`: The IP address of the VideoHub device (default: "192.168.10.129")
+- `PORT`: The port number for the VideoHub connection (default: 4444)
+
+These settings control where the button press messages are sent. Make sure to update these values to match your VideoHub device's network configuration.
+
 ## Running the Application
 
 1. Make sure your virtual environment is activated
