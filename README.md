@@ -63,7 +63,7 @@ To implement this change, you need to update three sections of the code:
      ```
 
 2. In `templates/index.html`:
-   - Update the CSS selectors if you want to maintain specific colors or other button specific configurations for each button:
+   - Update the CSS selectors if you want to maintain specific colors for each button:
 
      ```css
      #button_turn_off_lights { background-color: #4CAF50; }
@@ -73,6 +73,24 @@ To implement this change, you need to update three sections of the code:
 3. In `app.py`:
    - Update the `SOCKET_CONFIG` dictionary keys to match the new button IDs
    - Update the messages to match your VideoHub's command protocol
+
+   ```python
+   # Before:
+   SOCKET_CONFIG = {
+       'button1': {'ip': VIDEOHUB_HOST, 'port': VIDEOHUB_PORT, 'message': 'Button 1 pressed\n'},
+       'button2': {'ip': VIDEOHUB_HOST, 'port': VIDEOHUB_PORT, 'message': 'Button 2 pressed\n'},
+       'button3': {'ip': VIDEOHUB_HOST, 'port': VIDEOHUB_PORT, 'message': 'Button 3 pressed\n'},
+       'button4': {'ip': VIDEOHUB_HOST, 'port': VIDEOHUB_PORT, 'message': 'Button 4 pressed\n'}
+   }
+
+   # After:
+   SOCKET_CONFIG = {
+       'button_turn_off_lights': {'ip': VIDEOHUB_HOST, 'port': VIDEOHUB_PORT, 'message': 'LIGHTS_OFF\n'},
+       'button_turn_on_lights': {'ip': VIDEOHUB_HOST, 'port': VIDEOHUB_PORT, 'message': 'LIGHTS_ON\n'},
+       'button_switch_input_1': {'ip': VIDEOHUB_HOST, 'port': VIDEOHUB_PORT, 'message': 'INPUT_1\n'},
+       'button_switch_input_2': {'ip': VIDEOHUB_HOST, 'port': VIDEOHUB_PORT, 'message': 'INPUT_2\n'}
+   }
+   ```
 
 This naming convention makes the code more self-documenting and easier to maintain, as the purpose of each button is immediately clear from its identifier.
 
