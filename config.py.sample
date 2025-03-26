@@ -1,0 +1,44 @@
+# Application Settings
+APP_PRIVATE_MODE = True  # Set to False to allow access from other devices on the network
+
+# VideoHub TCP Settings
+VIDEOHUB_HOST = "192.168.10.129"
+VIDEOHUB_PORT = 4444
+
+# TV0 Serial Settings
+TV0_PORT = "COM1"
+TV0_BAUD = 9600
+
+# TV1 Serial Settings
+TV1_PORT = "COM2"
+TV1_BAUD = 9600
+
+# Add more serial ports as needed
+
+# Button Configuration
+BUTTON_CONFIG = {
+    'button1': {
+        'method': 'socket',
+        'ip': VIDEOHUB_HOST,
+        'port': VIDEOHUB_PORT,
+        'message': 'LIGHTS_OFF\n'
+    },
+    'button2': {
+        'method': 'socket',
+        'ip': VIDEOHUB_HOST,
+        'port': VIDEOHUB_PORT,
+        'message': 'LIGHTS_ON\n'
+    },
+    'button3': {
+        'method': 'serial',
+        'port': TV0_PORT,
+        'baud': TV0_BAUD,
+        'message': b'INPUT_1\n'
+    },
+    'button4': {
+        'method': 'serial',
+        'port': TV1_PORT,
+        'baud': TV1_BAUD,
+        'message': b'INPUT_2\n'
+    }
+} 
