@@ -18,20 +18,18 @@ app = Flask(__name__)
 
 def send_socket_message(ip, port, message):
     try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.connect((ip, port))
-        sock.sendall(message.encode())
-        sock.close()
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+            sock.connect((ip, port))
+            sock.sendall(message.encode())
         return True, "Message sent successfully"
     except Exception as e:
         return False, str(e)
 
 def send_serial_message(port, baud, message):
     try:
-        ser = serial.Serial(port, baud, timeout=1):
-        time.sleep(0.1)
-        ser.write(message.encode())
-        ser.close()
+        with serial.Serial(port, baud, timeout=1) as ser:
+            time.sleep(0.1)
+            ser.write(message.encode())
         return True, "Message sent successfully"
     except Exception as e:
         return False, str(e)
