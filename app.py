@@ -5,7 +5,7 @@ from time import sleep
 from os import path
 from sys import exit
 
-if not os.path.exists('config.py'):
+if not path.exists('config.py'):
     print("Error: config.py not found!")
     print("Please rename config.py.sample to config.py and update the settings.")
     print("This file contains your VideoHub and or serial port configuration.")
