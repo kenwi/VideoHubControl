@@ -27,9 +27,11 @@ def send_socket_message(ip, port, message):
 
 def send_serial_message(port, baud, message):
     try:
-        with serial.Serial(port, baud, timeout=1) as ser:
-            time.sleep(0.1)
-            ser.write(message.encode())
+        with Serial(port, baud, timeout=1) as ser:
+            sleep(0.1)
+            if isinstance(message, str):
+                message = message.encode()
+            ser.write(message)
         return True, "Message sent successfully"
     except Exception as e:
         return False, str(e)
