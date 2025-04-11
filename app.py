@@ -1,16 +1,15 @@
 from flask import Flask, render_template, request, jsonify
-import socket
-import json
-import serial
-import time
-import os
-import sys
+from socket import socket, AF_INET, SOCK_STREAM
+from serial import Serial
+from time import sleep
+from os import path
+from sys import exit
 
 if not os.path.exists('config.py'):
     print("Error: config.py not found!")
     print("Please rename config.py.sample to config.py and update the settings.")
     print("This file contains your VideoHub and or serial port configuration.")
-    sys.exit(1)
+    exit(1)
 
 from config import APP_PRIVATE_MODE, BUTTON_CONFIG
 
@@ -18,7 +17,7 @@ app = Flask(__name__)
 
 def send_socket_message(ip, port, message):
     try:
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        with socket(AF_INET, SOCK_STREAM) as sock:
             sock.connect((ip, port))
             sock.sendall(message.encode())
         return True, "Message sent successfully"
